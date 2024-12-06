@@ -1,80 +1,98 @@
 namespace AdventOfCode;
-public class DayTwo {
-    public static void GetSafeReportCount() {
-        var reports = GetReportsFromFile("./PuzzleInputs/DayTwo.txt");
-        int safeReports = 0;
-        reports.ForEach(r => {
-            if (CheckReport(r, out _))
-                safeReports++;
-        });
 
-        System.Console.WriteLine($"Safe report count: {safeReports}");
+public static class DayTwo
+{
+    // Method to calculate and print the count of safe reports from the input file
+    public static void GetSafeReportCount()
+    {
+        var reports = GetReportsFromFile("./PuzzleInputs/DayTwo.txt");
+
+        // Count the number of reports that pass the CheckReport method
+        int safeReports = reports.Count(report => CheckReport(report, out _));
+
+        // Print the total count of safe reports
+        Console.WriteLine($"Safe report count: {safeReports}");
     }
 
-    public static void GetSafeReportWithDampenerCount() {
+    // Method to calculate and print the count of safe reports with the use of a dampener
+    public static void GetSafeReportWithDampenerCount()
+    {
         var reports = GetReportsFromFile("./PuzzleInputs/DayTwo.txt");
-
         int safeReports = 0;
-        int failedPos;
-        reports.ForEach(r => {
-            if (CheckReport(r, out failedPos))
+
+        foreach (var report in reports)
+        {
+            // Check if the report is initially safe
+            if (CheckReport(report, out int failedPos))
+            {
                 safeReports++;
-            else {
-                // first, try removing i
-                List<int> dampenedReport = [.. r];
-                dampenedReport.RemoveAt(failedPos);
-                if (CheckReport(dampenedReport, out _))
-                    safeReports++;
-                else {
-                    dampenedReport = [.. r];
-                    dampenedReport.RemoveAt(failedPos + 1);
-                    if (CheckReport(dampenedReport, out _))
-                        safeReports++;
-                    else if (failedPos != 0) {
-                        dampenedReport = [.. r];
-                        dampenedReport.RemoveAt(failedPos - 1);
+            }
+            else
+            {
+                // Try removing elements around the failed position to make it safe
+                for (int offset = -1; offset <= 1; offset++)
+                {
+                    if (failedPos + offset >= 0 && failedPos + offset < report.Count)
+                    {
+                        // Create a copy of the report with one element removed
+                        var dampenedReport = new List<int>(report);
+                        dampenedReport.RemoveAt(failedPos + offset);
+
+                        // Check if the modified report is safe
                         if (CheckReport(dampenedReport, out _))
+                        {
                             safeReports++;
+                            break; // Exit the loop if the report becomes safe
+                        }
                     }
                 }
             }
-        });
+        }
 
-        System.Console.WriteLine($"Safe report count with Dampener: {safeReports}");
+        Console.WriteLine($"Safe report count with Dampener: {safeReports}");
     }
 
-    public static bool CheckReport(List<int> report, out int failedPosition) {
-        bool increasing = true;
+    // Method to validate if a report is safe and identify the first failing position
+    public static bool CheckReport(List<int> report, out int failedPosition)
+    {
         failedPosition = -1;
-        for (int i = 0; i < report.Count - 1; i++) {
+        bool? increasing = null;
+
+        for (int i = 0; i < report.Count - 1; i++)
+        {
             var difference = report[i + 1] - report[i];
-            if (Math.Abs(difference) < 1 || Math.Abs(difference) > 3) {
+
+            // Check if the difference is out of the allowed range (1 to 3 inclusive)
+            if (Math.Abs(difference) < 1 || Math.Abs(difference) > 3)
+            {
                 failedPosition = i;
                 return false;
             }
-            if (i == 0) {
+
+            // Determine if the sequence is increasing or decreasing
+            if (increasing == null)
+            {
                 increasing = difference > 0;
             }
-            if (increasing != difference > 0) {
+
+            // Check if the sequence violates the increasing/decreasing rule
+            if (increasing != (difference > 0))
+            {
                 failedPosition = i;
                 return false;
             }
         }
+
         return true;
     }
 
-    private static List<List<int>> GetReportsFromFile(string filePath) {
-        List<List<int>> reports = new();
-
-        using (StreamReader input = new StreamReader(filePath)) {
-            string? line;
-            while ((line = input.ReadLine()) != null) {
-                reports.Add(
-                    line.Split(" ")
-                    .Select(s => Int32.Parse(s)).ToList());
-            }
-        }
-
-        return reports;
+    // Method to read and parse reports from a file
+    private static List<List<int>> GetReportsFromFile(string filePath)
+    {
+        return File.ReadLines(filePath)
+            .Select(line => line.Split(" ")
+                                .Select(int.Parse)
+                                .ToList())
+            .ToList();
     }
 }

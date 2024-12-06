@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/ricky/Dev/AdventOfCode2024/AdventOfCode2024/AdventOfCode2024.csproj": {}
+    "S:\\Dev\\Repos\\AdventOfCode2024\\AdventOfCode2024\\AdventOfCode2024.csproj": {}
   },
   "projects": {
-    "/home/ricky/Dev/AdventOfCode2024/AdventOfCode2024/AdventOfCode2024.csproj": {
+    "S:\\Dev\\Repos\\AdventOfCode2024\\AdventOfCode2024\\AdventOfCode2024.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ricky/Dev/AdventOfCode2024/AdventOfCode2024/AdventOfCode2024.csproj",
+        "projectUniqueName": "S:\\Dev\\Repos\\AdventOfCode2024\\AdventOfCode2024\\AdventOfCode2024.csproj",
         "projectName": "AdventOfCode2024",
-        "projectPath": "/home/ricky/Dev/AdventOfCode2024/AdventOfCode2024/AdventOfCode2024.csproj",
-        "packagesPath": "/home/ricky/.nuget/packages/",
-        "outputPath": "/home/ricky/Dev/AdventOfCode2024/AdventOfCode2024/obj/",
+        "projectPath": "S:\\Dev\\Repos\\AdventOfCode2024\\AdventOfCode2024\\AdventOfCode2024.csproj",
+        "packagesPath": "C:\\Users\\Richa\\.nuget\\packages\\",
+        "outputPath": "S:\\Dev\\Repos\\AdventOfCode2024\\AdventOfCode2024\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/ricky/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Richa\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -53,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
