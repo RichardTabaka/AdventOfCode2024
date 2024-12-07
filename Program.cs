@@ -20,6 +20,10 @@ if (Int32.TryParse(Console.ReadLine(), out day))
             DayThree.AnalyzeCorruptedCode();
             DayThree.AnalyzeCorruptedCodeWithDisables();
             break;
+        case 4:
+            DayFour.SolveWordSearch();
+            DayFour.XMasNotXmas();
+            break;
         default:
             Console.WriteLine("Sorry, I haven't got there yet!");
             break;

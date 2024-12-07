@@ -26,26 +26,36 @@ public static class DayTwo
             if (CheckReport(report, out int failedPos))
             {
                 safeReports++;
+                continue; // Move to the next report
             }
-            else
-            {
-                // Try removing elements around the failed position to make it safe
-                for (int offset = -1; offset <= 1; offset++)
-                {
-                    if (failedPos + offset >= 0 && failedPos + offset < report.Count)
-                    {
-                        // Create a copy of the report with one element removed
-                        var dampenedReport = new List<int>(report);
-                        dampenedReport.RemoveAt(failedPos + offset);
 
-                        // Check if the modified report is safe
-                        if (CheckReport(dampenedReport, out _))
-                        {
-                            safeReports++;
-                            break; // Exit the loop if the report becomes safe
-                        }
-                    }
+            // Try removing elements around the failed position to make it safe
+            bool reportBecameSafe = false;
+            for (int offset = -1; offset <= 1; offset++)
+            {
+                int indexToRemove = failedPos + offset;
+
+                // Ensure the index is within valid bounds
+                if (indexToRemove < 0 || indexToRemove >= report.Count)
+                    continue;
+
+                // Create a copy of the report with one element removed
+                var dampenedReport = new List<int>(report);
+                dampenedReport.RemoveAt(indexToRemove);
+
+                // Check if the modified report is safe
+                if (CheckReport(dampenedReport, out _))
+                {
+                    safeReports++;
+                    reportBecameSafe = true;
+                    break; // Exit the inner loop if the report becomes safe
                 }
+            }
+
+            // Continue to the next report if dampening did not work (optional logic handling)
+            if (!reportBecameSafe)
+            {
+                // Optionally, log or handle cases where dampening failed
             }
         }
 
