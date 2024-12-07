@@ -1,10 +1,8 @@
-﻿using System.Diagnostics;
-using AdventOfCode;
+﻿using AdventOfCode;
 
 Console.WriteLine("Welcome to my Advent Of Code 2024 Program!");
 Console.Write("Enter a day number (1-25) to run that day's code: ");
-int day;
-if (Int32.TryParse(Console.ReadLine(), out day))
+if (int.TryParse(Console.ReadLine(), out int day))
 {
     switch (day)
     {
@@ -23,6 +21,9 @@ if (Int32.TryParse(Console.ReadLine(), out day))
         case 4:
             DayFour.SolveWordSearch();
             DayFour.XMasNotXmas();
+            break;
+        case 5:
+            DayFive.CheckManualPageOrders();
             break;
         default:
             Console.WriteLine("Sorry, I haven't got there yet!");
