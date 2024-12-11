@@ -1,4 +1,5 @@
-﻿using AdventOfCode;
+﻿using System.Collections;
+using AdventOfCode;
 
 Console.WriteLine("Welcome to my Advent Of Code 2024 Program!");
 Console.Write("Enter a day number (1-25) to run that day's code: ");
@@ -30,6 +31,9 @@ if (int.TryParse(Console.ReadLine(), out int day))
             break;
         case 7:
             DaySeven.TestOperators();
+            break;
+        case 8:
+            DayEight.FindTheAntinodes();
             break;
         default:
             Console.WriteLine("Sorry, I haven't got there yet!");
