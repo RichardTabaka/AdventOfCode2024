@@ -28,6 +28,9 @@ if (int.TryParse(Console.ReadLine(), out int day))
         case 6:
             DaySix.PredictPatrolRoute();
             break;
+        case 7:
+            DaySeven.TestOperators();
+            break;
         default:
             Console.WriteLine("Sorry, I haven't got there yet!");
             break;
