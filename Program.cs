@@ -35,6 +35,9 @@ if (int.TryParse(Console.ReadLine(), out int day))
         case 8:
             DayEight.FindTheAntinodes();
             break;
+        case 9:
+            DayNine.CompactDisk();
+            break;
         default:
             Console.WriteLine("Sorry, I haven't got there yet!");
             break;
