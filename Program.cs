@@ -38,6 +38,12 @@ if (int.TryParse(Console.ReadLine(), out int day))
         case 9:
             DayNine.CompactDisk();
             break;
+        case 10:
+            DayTen.FindTrailScore();
+            break;
+        case 11:
+            DayEleven.BlinkAndChangeStones();
+            break;
         default:
             Console.WriteLine("Sorry, I haven't got there yet!");
             break;

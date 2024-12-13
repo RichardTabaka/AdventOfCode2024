@@ -87,7 +87,7 @@ public static class DayNine
         }
 
         var sorted = (int[])blocks.Clone();
-        int fileId = int.MaxValue;
+        int fileId;
         for (int i = sorted.Length - 1; i > 0; i--)
         {
             if (sorted[i] != -1)
