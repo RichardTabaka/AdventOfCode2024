@@ -44,6 +44,9 @@ if (int.TryParse(Console.ReadLine(), out int day))
         case 11:
             DayEleven.BlinkAndChangeStones();
             break;
+        case 12:
+            DayTwelve.AnalyzeFarmPlan();
+            break;
         default:
             Console.WriteLine("Sorry, I haven't got there yet!");
             break;
